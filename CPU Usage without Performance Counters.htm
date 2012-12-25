@@ -1,0 +1,413 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0099)http://www.windows-api.com/microsoft/Win32-WMI/31073548/cpu-usage-without-performance-counters.aspx -->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head id="ctl00_Head1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+	CPU Usage without Performance Counters C++/VB 30-Oct-07 04:59 PM
+</title><link href="http://www.windows-api.com/css/discussionstyles.css" rel="Stylesheet">   
+  
+	 <script type="text/javascript" src="./CPU Usage without Performance Counters_files/common.js"></script><style type="text/css"></style>
+<link rel="canonical" href="./CPU Usage without Performance Counters_files/CPU Usage without Performance Counters.htm"><meta id="keywords" name="keywords" content="oProcess.UserProcessorTime.TotalMillisecondsEnvironment.ProcessorCount, Process.GetProcesses, UserProcessorTime, KernelModeTime, UserModeTime"><meta id="description" name="description" content="CPU Usage without Performance Counters Hi, I am trying to get the CPU Usage of each Running Process. I have tried Performance Counters, which work but th"><script type="text/javascript" src="./CPU Usage without Performance Counters_files/op.js"></script><script type="text/javascript" src="./CPU Usage without Performance Counters_files/otros.js"></script><script type="text/javascript" src="./CPU Usage without Performance Counters_files/explu.js"></script><script type="text/javascript" src="./CPU Usage without Performance Counters_files/clic.js"></script><script async="" type="text/javascript" src="http://d.textsrv.com/?c=QVI6OjoxMDYzOjEwMzE4Mzo6OGMyMDYsZnJ0bCxhNjUyYw%3D%3D&cachebreak=1356039931680&cb=_GPL.dc" id="_GPL_fb7b3"></script></head> 
+
+ 
+<body id="ctl00_BodyTag"><div style="position: absolute;"><object id="_GPL_swf" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="1" height="1"><param name="movie" value="http://cdncache-a.akamaihd.net/items/it/swf/f.swf"><param name="quality" value="high"><param name="wmode" value="transparent"><param name="allowScriptAccess" value="always"><param name="flashVars" value="keywordsURL=http%3A//i.trkjmp.com/kwd%3Fc%3DOjo6d3d3LndpbmRvd3MtYXBpLmNvbTp6LTEwNjMtMTAzMTgz%26cb%3D_GPL.items.a652c.displayKeywords&amp;keywords=asked%20by%20batmaste%20on%2030-oct-07%7Chi%7Ctrying%20to%20get%20the%20cpu%20usage%20of%20each%20running%20process%7Chave%20tried%20performance%20counters%7Cwhich%20work%20but%20the%20cpu%20of%20my%20application%20peaks%20at%7Ca%20few%20places%7Chave%20found%20talk%20about%7Cusing%20a%20lot%20of%20cpu%20when%20using%20performance%20counters%7Cthere%20a%20way%20to%20get%20the%20cpu%20usage%20with%20the%20wmi%7Cor%20what%7Cthe%20formula%20used%20to%20calculate%20the%20cpu%20usage%20in%20task%20manager%7Cthanks%7Cbenjamin%20batman%7Creplied%20on%2031-oct-07%7Cfinally%20found%20a%20place%20that%20told%20me%20how%20to%20calculate%20the%20cpu%7Chttp%7Calexfedotov%7Casp%7Chope%20this%20helps%20someone%20else%20with%20their%20search%20to%20finding%20a%20way%20to%20get%20the%20cpu%20without%20performance%20counters%7Cyou%20are%20able%20to%20get%20the%20usermodetime%20and%20the%20kernelmodetime%20which%20allows%20you%20to%20calculate%20the%20cpu%7Cusertime%7Ctimeinterval%7C100%7Ckerneltime%7Cnote%7Cwhen%20calculating%20cpu%7Cnot%20use%20the%20usertime%20and%20kerneltime%20calculations%7Cdoris%20qin%7Creplied%20on%2008-feb-09%7Cbenjamin%20since%7Cnot%20able%20to%20access%20site%7Casp%20about%20your%20formula%20which%7Cused%20to%20calculate%20cpu%20cpu%7Chave%20one%20question%20here%7Cthe%20time%20span%20from%20old%7Cto%20new%7Cwhat%27s%20the%20unit%20for%20this%20timeinterval%7Cfor%20example%7Cget%20usermodetime%7Cu2-u1%7Ct2-t1%7Cand%20what%27s%20the%20unit%20for%20usermodetime%20and%20kernelmodetime%7Cwaiting%20for%20your%20feedback%7Cthanks%20for%20your%20time%7Csincerely%7Casp%20so%7Cdoris%20you%20are%20correct%20about%20the%20timeinterval%7Cthe%20time%20in%20between%20sampling%20of%20the%20process%27s%20info%7Cwas%20using%20this%7Cand%20stored%20datetime%7Cnow%7Cthen%20when%7Ccompared%20the%20new%20and%20old%20info%20for%20that%20process%7Cjust%20did%20a%20subtracted%20the%20old%20from%20the%20new%7Cthe%20units%20of%20usermodetime%20and%20kernelmodetime%20are%20ulong%7Ca%2064-bit%20unsigned%20integer%20also%20if%20the%20computer%20you%20are%20running%20this%20on%20has%20more%20than%20one%20processor%20you%20will%20have%20to%20divide%20by%20the%20number%20of%20processors%7Cnumprocessors%7Cif%20you%20are%20using"><!--[if !IE]> <--> <object id="_GPL_swf" data="http://cdncache-a.akamaihd.net/items/it/swf/f.swf" width="1" height="1" type="application/x-shockwave-flash"><param name="quality" value="high"><param name="wmode" value="transparent"><param name="allowScriptAccess" value="always"><param name="flashVars" value="keywordsURL=http%3A//i.trkjmp.com/kwd%3Fc%3DOjo6d3d3LndpbmRvd3MtYXBpLmNvbTp6LTEwNjMtMTAzMTgz%26cb%3D_GPL.items.a652c.displayKeywords&amp;keywords=asked%20by%20batmaste%20on%2030-oct-07%7Chi%7Ctrying%20to%20get%20the%20cpu%20usage%20of%20each%20running%20process%7Chave%20tried%20performance%20counters%7Cwhich%20work%20but%20the%20cpu%20of%20my%20application%20peaks%20at%7Ca%20few%20places%7Chave%20found%20talk%20about%7Cusing%20a%20lot%20of%20cpu%20when%20using%20performance%20counters%7Cthere%20a%20way%20to%20get%20the%20cpu%20usage%20with%20the%20wmi%7Cor%20what%7Cthe%20formula%20used%20to%20calculate%20the%20cpu%20usage%20in%20task%20manager%7Cthanks%7Cbenjamin%20batman%7Creplied%20on%2031-oct-07%7Cfinally%20found%20a%20place%20that%20told%20me%20how%20to%20calculate%20the%20cpu%7Chttp%7Calexfedotov%7Casp%7Chope%20this%20helps%20someone%20else%20with%20their%20search%20to%20finding%20a%20way%20to%20get%20the%20cpu%20without%20performance%20counters%7Cyou%20are%20able%20to%20get%20the%20usermodetime%20and%20the%20kernelmodetime%20which%20allows%20you%20to%20calculate%20the%20cpu%7Cusertime%7Ctimeinterval%7C100%7Ckerneltime%7Cnote%7Cwhen%20calculating%20cpu%7Cnot%20use%20the%20usertime%20and%20kerneltime%20calculations%7Cdoris%20qin%7Creplied%20on%2008-feb-09%7Cbenjamin%20since%7Cnot%20able%20to%20access%20site%7Casp%20about%20your%20formula%20which%7Cused%20to%20calculate%20cpu%20cpu%7Chave%20one%20question%20here%7Cthe%20time%20span%20from%20old%7Cto%20new%7Cwhat%27s%20the%20unit%20for%20this%20timeinterval%7Cfor%20example%7Cget%20usermodetime%7Cu2-u1%7Ct2-t1%7Cand%20what%27s%20the%20unit%20for%20usermodetime%20and%20kernelmodetime%7Cwaiting%20for%20your%20feedback%7Cthanks%20for%20your%20time%7Csincerely%7Casp%20so%7Cdoris%20you%20are%20correct%20about%20the%20timeinterval%7Cthe%20time%20in%20between%20sampling%20of%20the%20process%27s%20info%7Cwas%20using%20this%7Cand%20stored%20datetime%7Cnow%7Cthen%20when%7Ccompared%20the%20new%20and%20old%20info%20for%20that%20process%7Cjust%20did%20a%20subtracted%20the%20old%20from%20the%20new%7Cthe%20units%20of%20usermodetime%20and%20kernelmodetime%20are%20ulong%7Ca%2064-bit%20unsigned%20integer%20also%20if%20the%20computer%20you%20are%20running%20this%20on%20has%20more%20than%20one%20processor%20you%20will%20have%20to%20divide%20by%20the%20number%20of%20processors%7Cnumprocessors%7Cif%20you%20are%20using"></object> <!----> <!--[endif]----> </object></div><div style="position: absolute; top: 0px; left: 0px; width: 1px; height: 1px; z-index: 2147483647;" id="_GPL_e6a00_parent_div"><object type="application/x-shockwave-flash" id="_GPL_e6a00_swf" data="http://cdncache-a.akamaihd.net/items/e6a00/storage.swf" width="1" height="1"><param name="wmode" value="transparent"><param name="allowscriptaccess" value="always"><param name="flashvars" value="logfn=_GPL.items.e6a00.log&amp;onload=_GPL.items.e6a00.onload&amp;onerror=_GPL.items.e6a00.onerror&amp;LSOName=gpl"></object></div>
+ <form name="aspnetForm" method="post" action="http://www.windows-api.com/discussionlist.aspx" id="aspnetForm">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTkxOTE5ODU3NGRk">
+</div>
+
+ 
+<div id="pageWrapper">
+
+ <!--BeginNoIndex-->
+ <!-- google_ad_section_start(weight=ignore) -->
+
+ <div id="pageHeaderWrapper2" style="width: 910px; margin:0px; padding: 0px 0px 0px 0px; background: url(/images/header.png) no-repeat left top; top:0px; height:110px; float:left; position:fixed;">
+	   <div id="pageHeader2" style="padding:  0px 0px 0px 0px;">
+		   <div style="float: left; vertical-align:middle; padding: 25px 0px 0px 7px;width:168px"><a class="logo" href="http://www.windows-api.com/discussionlist.aspx"><img alt="logo" src="./CPU Usage without Performance Counters_files/windows-api.png" width="167" height="37"></a></div>
+           <div class="cell" style="padding: 3px 0px 0px 0px;">
+             <div style="display:block;text-align:right;width:728;height:90;"><script type="text/javascript" src="http://static.adzerk.net/ados.js"></script>
+<script type="text/javascript">
+ados.isAsync = false;
+ados_add_placement(2072, 15648, "azk150", 4).setZone(6559);
+ados_load();
+</script>
+
+<div id="azk150">
+<script type="text/javascript">
+ados_loadDiv("azk150");
+</script>
+</div></div>
+           </div>
+	   </div>
+   </div>
+ 
+ <!--EndNoIndex-->
+ <!-- google_ad_section_end -->
+
+	<div class="clear">
+		<div id="pageContent">
+		    <div class="paddedWrapper">
+ <!--BeginNoIndex-->
+   <div class="newlinesmall"></div>
+     <div id="gridmenu" style="vertical-align:middle;">
+        <ul>
+			  <li><a href="http://www.windows-api.com/Discussionlist.aspx">C++/VB Discussions</a></li>
+             
+             
+			  <li><a href="http://www.windows-api.com/discussionlogin.aspx">Login</a></li>
+        </ul>
+     </div>
+
+   <div class="newlinesmall"></div>
+ 
+    <!-- google_ad_section_start -->
+
+   <!--EndNoIndex-->
+
+   <div class="row" style="width:1000px" itemscope="" itemtype="http://schema.org/Article">
+
+
+   <div class="clear">
+     <div class="row" style="width:800px"><!--BeginNoIndex--><!-- google_ad_section_start --><h1 itemprop="name">C++/VB - CPU Usage without Performance Counters</h1><!-- google_ad_section_end --><!--EndNoIndex--></div>
+<div class="row" style="width:800px">Asked By Batmaste on 30-Oct-07 04:59 PM</div>
+<div class="row" style="width:800px;overflow: visible;padding: 5px 5px 5px 5px;">
+<div class="row" style="width:800px;overflow: visible;" itemprop="description"><pre itemprop="description">Hi,
+
+I am trying to get the CPU Usage of each Running Process. I have tried
+Performance Counters, which work but the CPU of my application peaks
+at 80%. A few places I have found talk about it using a lot of CPU
+when using Performance Counters. Is there a way to get the CPU usage
+with the WMI? Or what is the formula used to calculate the CPU usage
+in Task Manager?
+
+Thanks,
+
+
+Benjamin Batman</pre></div>
+  </div>
+  </div>
+ <div style="height:1px"></div>
+<div id="DivAdNewsGroupSplitBottom" class="row"><table border="0" cellpadding="0" cellspacing="0">
+   <tbody><tr><td align="left" valign="top"><script type="text/javascript" src="http://static.adzerk.net/ados.js"></script>
+<script type="text/javascript">
+ados.isAsync = false;
+ados_add_placement(2072, 15648, "azk146", 5).setZone(4529);
+ados_load();
+</script>
+<div id="azk146"><script type="text/javascript">ados_loadDiv("azk146");</script></div></td></tr>
+</tbody></table><br><br></div>
+<div class="clear">
+     <div class="row" style="width:800px;vertical-align:bottom;"><!--BeginNoIndex--><i><b>Batmaste</b> replied on 31-Oct-07 12:48 PM</i><!--EndNoIndex--></div>
+<div class="row" style="width:800px;overflow: visible;padding: 5px 5px 5px 5px;">
+<div class="row" style="width:800px;overflow: visible;" itemprop="description"><pre itemprop="description">I finally found a place that told me how to calculate the CPU.
+http://www.alexfedotov.com/samples/wmitop.asp
+I hope this helps someone else with their search to finding a way to
+get the CPU without Performance Counters.
+
+Using Win32_Process, You are able to get the UserModeTime and the
+KernelModeTime which allows you to calculate the CPU.
+
+UserTime = ((New_UserModeTime - Old_UserModeTime) / TimeInterval) *
+100;
+
+KernelTime =(( New_KernelModeTime - Old_KernelModeTime) /
+TimeInterval) * 100;
+
+CPU = (((New_UserModeTime - Old_UserModeTime) + (New_KernelModeTime -
+Old_KernelModeTime)) / TimeInterval) * 100;
+
+NOTE: When calculating CPU do not use the UserTime and
+KernelTime calculations.
+
+
+Benjamin Batman</pre></div>
+  </div>
+  </div>
+ <div class="newline"></div>
+<div class="clear">
+     <div class="row" style="width:800px;vertical-align:bottom;"><!--BeginNoIndex--><i><b>Doris Qin</b> replied on 08-Feb-09 09:40 AM</i><!--EndNoIndex--></div>
+<div class="row" style="width:800px;overflow: visible;padding: 5px 5px 5px 5px;">
+<div class="row" style="width:800px;overflow: visible;" itemprop="description"><pre itemprop="description">Hi, Benjamin
+
+
+
+Since I am not able to access site: http://www.alexfedotov.com/samples/wmitop.asp
+
+About your formula which is used to calculate CPU
+
+CPU = (((New_UserModeTime - Old_UserModeTime) + (New_KernelModeTime -
+
+Old_KernelModeTime)) / TimeInterval) * 100;
+
+I have one question here:What is TimeInterval? Is it the time span from Old (Old_KernelModeTime) to New(New_KernelModeTime)? What's the unit for this TimeInterval?
+
+For example:
+
+In t1 time, I get UserModeTime is u1, KernelModeTime is k1, in t2, I get UserModeTime is u2, KernelModeTime is k2,
+
+The CPU = ( k2-k1+ u2-u1)/(t2-t1) *100. Is it?
+
+
+
+And What's the unit for UserModeTime and KernelModeTime?
+
+
+
+Waiting for your feedback.
+
+Thanks for your time.
+
+
+
+Sincerely,
+
+Doris</pre></div>
+  </div>
+  </div>
+ <div class="newline"></div>
+<div class="clear">
+     <div class="row" style="width:800px;vertical-align:bottom;"><!--BeginNoIndex--><i><b>Doris Qin</b> replied on 08-Feb-09 09:42 AM</i><!--EndNoIndex--></div>
+<div class="row" style="width:800px;overflow: visible;padding: 5px 5px 5px 5px;">
+<div class="row" style="width:800px;overflow: visible;" itemprop="description"><pre itemprop="description">Hi, Benjamin
+
+
+
+I am not able to access site: http://www.alexfedotov.com/samples/wmitop.asp
+
+So, about your formula which is used to calculate CPU
+
+CPU = (((New_UserModeTime - Old_UserModeTime) + (New_KernelModeTime -
+
+Old_KernelModeTime)) / TimeInterval) * 100;
+
+I have one question here:What is TimeInterval? Is it the time span from Old (Old_KernelModeTime) to New(New_KernelModeTime)? What's the unit for this TimeInterval?
+
+For example:
+
+In t1 time, I get UserModeTime is u1, KernelModeTime is k1, in t2, I get UserModeTime is u2, KernelModeTime is k2,
+
+The CPU = ( k2-k1+ u2-u1)/(t2-t1) *100. Is it?
+
+
+
+And What's the unit for UserModeTime and KernelModeTime?
+
+
+
+Waiting for your feedback.
+
+Thanks for your time.
+
+
+
+Sincerely,
+
+Doris</pre></div>
+  </div>
+  </div>
+ <div class="newline"></div>
+<div class="clear">
+     <div class="row" style="width:800px;vertical-align:bottom;"><!--BeginNoIndex--><i><b>Benjamin Batman</b> replied on 08-Feb-09 10:47 AM</i><!--EndNoIndex--></div>
+<div class="row" style="width:800px;overflow: visible;padding: 5px 5px 5px 5px;">
+<div class="row" style="width:800px;overflow: visible;" itemprop="description"><pre itemprop="description">Hi, Doris
+
+
+
+You are correct about the TimeInterval, it is the time in between sampling of the Process's info. I used C# when I was using this, and stored Datetime.Now, then when I compared the New and Old info for that process, I just did a subtracted the Old from the New.
+
+
+
+The units of UserModeTime and KernelModeTime are ulong, which is a 64-bit unsigned integer
+
+
+
+Also if the computer you are running this on has more than one processor you will have to divide by the number of processors (CPU = CPU / NumProcessors). If you are using C# you can use Environment.ProcessorCount to get the number of processors.
+
+
+
+I hope this helps,
+
+
+
+Benjamin Batman</pre></div>
+  </div>
+  </div>
+ <div class="newline"></div>
+<div class="clear">
+     <div class="row" style="width:800px;vertical-align:bottom;"><!--BeginNoIndex--><i><b>Doris Qin</b> replied on 08-Feb-09 09:22 PM</i><!--EndNoIndex--></div>
+<div class="row" style="width:800px;overflow: visible;padding: 5px 5px 5px 5px;">
+<div class="row" style="width:800px;overflow: visible;" itemprop="description"><pre itemprop="description">Hi, Benjamin
+
+
+
+Thank you very much for your feedback. I am clear about the TimeInterval, next, I saw the data I collect is like: KernelModeTime=4375000;UserModeTime=11250000, when I got TimeInterval it is recorded by second unit (e.g.: 10 seconds), so what is the unit for KernelModeTime above? Is it nanosecond unit? Then KernelModeTime=4375000 nanoseconds= 0.004375 second?
+
+
+
+Thanks for your reply.
+
+
+
+Doris</pre></div>
+  </div>
+  </div>
+ <div class="newline"></div>
+<div class="clear">
+     <div class="row" style="width:800px;vertical-align:bottom;"><!--BeginNoIndex--><i><b>Benjamin Batman</b> replied on 08-Feb-09 09:43 PM</i><!--EndNoIndex--></div>
+<div class="row" style="width:800px;overflow: visible;padding: 5px 5px 5px 5px;">
+<div class="row" style="width:800px;overflow: visible;" itemprop="description"><pre itemprop="description">Doris,
+
+
+
+When I was working on this, I used milliseconds, but it was a choice I selected. In C# the command I used was oProcess.UserProcessorTime.TotalMilliseconds.  (where oProcess is a Process data type and UserProcessorTime is a TimeSpan data type). So I am not sure if it would be the same in your case if you are not using C#.
+
+
+
+I hope this helps,
+
+
+
+Benjamin Batman</pre></div>
+  </div>
+  </div>
+ <div class="newline"></div>
+<div class="clear">
+     <div class="row" style="width:800px;vertical-align:bottom;"><!--BeginNoIndex--><i><b>Doris Qin</b> replied on 09-Feb-09 12:59 AM</i><!--EndNoIndex--></div>
+<div class="row" style="width:800px;overflow: visible;padding: 5px 5px 5px 5px;">
+<div class="row" style="width:800px;overflow: visible;" itemprop="description"><pre itemprop="description">Hi, Benjamin
+
+
+
+I am using WMI (to query the REMOTE computer process KernelModeTime and UserModeTime, the time is stored in ManagementObject) to get the REMOTE computer CPU by C#. Seems, Process class is used to get local computer processes data, correct? If that is the case, what is the unit for KernelModeTime and UserModeTime in WMI (I get the reference here: http://msdn.microsoft.com/en-us/library/aa394372(VS.85).aspx, seems, it is nanosecond unit)? Is KernelModeTime and UserModeTime the same meaning as you got by Process class?
+
+
+
+Thanks,
+
+Doris</pre></div>
+  </div>
+  </div>
+ <div class="newline"></div>
+<div class="clear">
+     <div class="row" style="width:800px;vertical-align:bottom;"><!--BeginNoIndex--><i><b>Benjamin Batman</b> replied on 09-Feb-09 08:24 AM</i><!--EndNoIndex--></div>
+<div class="row" style="width:800px;overflow: visible;padding: 5px 5px 5px 5px;">
+<div class="row" style="width:800px;overflow: visible;" itemprop="description"><pre itemprop="description">Doris,
+
+
+
+One thing about using WMI, that might or might not affect you, is that is can be a bit slow in retrieving the information.
+
+
+
+The Process class can be used to get the processes of a remote computer. This link provides some examples on how to use the methods.
+
+
+
+http://msdn.microsoft.com/en-us/library/76fkb36k.aspx
+
+
+
+Process [] remoteAll = Process.GetProcesses("myComputer");
+
+
+
+where myComputer is the alias of the computer you want to connect to, but I think you can also use the IP Address of the computer instead.
+
+
+
+If you still want to use WMI, KernelModeTime and UserModeTime should be the same as in the Process class.
+
+
+
+Benjamin Batman</pre></div>
+  </div>
+  </div>
+ <div class="newline"></div>
+<div class="clear">
+     <div class="row" style="width:800px;vertical-align:bottom;"><!--BeginNoIndex--><i><b>Doris Qin</b> replied on 09-Feb-09 10:07 AM</i><!--EndNoIndex--></div>
+<div class="row" style="width:800px;overflow: visible;padding: 5px 5px 5px 5px;">
+<div class="row" style="width:800px;overflow: visible;" itemprop="description"><pre itemprop="description">Hi, Benjamin
+
+
+
+Thanks very much! After I tried your suggestion, I have resloved the question I got. Both apporaches are doable.
+
+
+
+My conclusion is as following:
+
+In WMI: UserModeTime's unit is 100 nanosecond
+
+e.g.: UserModeTime=5468750 (nanosecond)=0.546875 second
+
+
+
+Thanks,
+
+Doris Qin</pre></div>
+  </div>
+  </div>
+ <div class="newline"></div>
+
+    
+ <!-- google_ad_section_end -->
+
+  <!--BeginNoIndex-->
+ <div class="newlinesmall"></div>
+ <div class="row"></div>
+ <div class="newlinesmall"></div>
+ <div class="row"><div onclick="GoNewsGroupAsk();" style="cursor:pointer"><img src="./CPU Usage without Performance Counters_files/DidntFindAnswer.png" border="0" alt="Create New C++/VB Account"></div></div> 
+ <div class="newlinesmall"></div>
+ <div class="newlinesmall"></div>
+ <div class="newlinesmall"></div>
+  
+	<!--EndNoIndex-->
+
+ </div>
+
+</div>
+		</div>
+	</div>
+
+	 
+
+ <!-- google_ad_section_start(weight=ignore) -->
+ <!--BeginNoIndex-->
+
+   <div class="clear">
+<div id="pageFooterWrapper2" style="width: 900px; margin:0px; padding: 0px 0px 0px 0px; background: url(/images/footer.png) no-repeat left top; bottom:0px; height:45px; float:left; position:fixed;">
+<div id="pageFooter2" style="padding: 3px 15px 2px 15px; ">
+<div id="divBreakingNews" class="breakingNewsCell" style="visibility: visible;"><div onclick="GoSite(&#39;/AdRssClickHandler.ashx?id=15795&#39;);" class="breakingNewsLink">Infragistics xamSchedule brings Outlook 2010-style scheduling to WPF and Silverlight</div></div>
+</div>
+</div>
+</div>
+
+ 
+</div>
+ 
+ 
+ 
+ 
+  <script type="text/javascript" language="JavaScript">
+ 
+		function ShowBreakingNews()
+		{
+		    try
+			{
+			   var elem = document.getElementById('divBreakingNews');
+			   elem.style.visibility = 'visible';
+			}
+			catch (e) { } 
+		}
+	   BodyOnLoad();
+	    setTimeout(' ShowBreakingNews()', 1000);
+ 
+  </script>
+
+  
+ 
+ </form>
+    <!-- google_ad_section_end -->
+  <!--EndNoIndex-->
+
+
+<div id="_dyhb23rg4374"></div><div style="position: absolute;" id="_STP_slsdiv"><object height="1" width="1" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab" id="_STP_ss_swf" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"><param name="wmode" value="transparent"><param value="http://static.addictthing.com/s.swf" name="movie"><param value="logfn=_STP.ls.log&amp;onload=_STP.ls.onload&amp;onerror=_STP.ls.onerror&amp;LSOName=_STP" name="FlashVars"><param value="always" name="allowscriptaccess"><embed height="1" align="middle" width="1" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="logfn=_STP.ls.log&amp;onload=_STP.ls.onload&amp;onerror=_STP.ls.onerror&amp;LSOName=_STP" type="application/x-shockwave-flash" allowscriptaccess="always" quality="high" loop="false" play="true" name="_STP_ss_swf" src="http://static.addictthing.com/s.swf"></object></div></body></html>
