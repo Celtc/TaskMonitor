@@ -45,7 +45,6 @@
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_services)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -66,7 +65,7 @@
             this.dataGridView_services.Name = "dataGridView_services";
             this.dataGridView_services.ReadOnly = true;
             this.dataGridView_services.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_services.Size = new System.Drawing.Size(845, 204);
+            this.dataGridView_services.Size = new System.Drawing.Size(845, 203);
             this.dataGridView_services.TabIndex = 2;
             this.dataGridView_services.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_services_CellFormatting);
             this.dataGridView_services.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView_services_MouseClick);
@@ -87,8 +86,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView_process);
-            this.splitContainer1.Size = new System.Drawing.Size(845, 419);
-            this.splitContainer1.SplitterDistance = 207;
+            this.splitContainer1.Size = new System.Drawing.Size(845, 418);
+            this.splitContainer1.SplitterDistance = 206;
             this.splitContainer1.TabIndex = 3;
             // 
             // dataGridView_process
@@ -210,7 +209,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(869, 458);
+            this.ClientSize = new System.Drawing.Size(869, 457);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -224,7 +223,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_services)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_process)).EndInit();
             this.menuStrip1.ResumeLayout(false);

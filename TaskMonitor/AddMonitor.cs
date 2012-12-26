@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 
 using TaskMonitor.Sources;
-using System.Threading.Tasks;
 
 namespace TaskMonitor
 {
