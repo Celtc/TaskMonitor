@@ -10,9 +10,9 @@ using TaskMonitor.Sources;
 
 namespace TaskMonitor
 {
-    public partial class EndMonitor : Form
+    public partial class EndMonitorForm : Form
     {
-        public EndMonitor(MonitorMgr caller)
+        public EndMonitorForm(MonitorMgr caller)
         {
             InitializeComponent();
 

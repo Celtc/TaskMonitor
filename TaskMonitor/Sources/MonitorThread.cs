@@ -88,7 +88,7 @@ namespace TaskMonitor.Sources
                     sMonitor.actualStartMode = null;
                     this.monitor.error = true;
                     this.suspendMtx.ReleaseMutex();
-                    Thread.Sleep(MonitorMgr.RefreshInterval);
+                    Thread.Sleep(MonitorMgr.GralConfig.queryingInterval);
                     continue;
                 }
 
@@ -97,28 +97,28 @@ namespace TaskMonitor.Sources
                 {
                     this.monitor.error = true;
                     this.suspendMtx.ReleaseMutex();
-                    Thread.Sleep(MonitorMgr.RefreshInterval);
+                    Thread.Sleep(MonitorMgr.GralConfig.queryingInterval);
                     continue;
                 }
                 if (sMonitor.wantedState != null && sMonitor.wantedState != sMonitor.actualState)
                 {
                     this.monitor.error = true;
                     this.suspendMtx.ReleaseMutex();
-                    Thread.Sleep(MonitorMgr.RefreshInterval);
+                    Thread.Sleep(MonitorMgr.GralConfig.queryingInterval);
                     continue;
                 }
                 if (sMonitor.wantedStartMode != null && sMonitor.wantedStartMode != sMonitor.actualStartMode)
                 {
                     this.monitor.error = true;
                     this.suspendMtx.ReleaseMutex();
-                    Thread.Sleep(MonitorMgr.RefreshInterval);
+                    Thread.Sleep(MonitorMgr.GralConfig.queryingInterval);
                     continue;
                 }
 
                 //Si llega hasta aca todos los chequeos fueron correctos
                 this.monitor.error = false;
                 this.suspendMtx.ReleaseMutex();
-                Thread.Sleep(MonitorMgr.RefreshInterval);
+                Thread.Sleep(MonitorMgr.GralConfig.queryingInterval);
             }
 
             //Finaliza el hilo

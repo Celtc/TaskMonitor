@@ -32,6 +32,9 @@ namespace TaskMonitor
             this.monitoring = false;
             this.serviceMonitorThreads = new List<ThreadContext>();
             this.processMonitorThreads = new List<ThreadContext>();
+
+            _gralConfigData.queryingInterval = 5000;
+            _gralConfigData.updateInterval = 1000;
         }
 
         #region Buttons
@@ -66,7 +69,15 @@ namespace TaskMonitor
 
         private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            using (ConfigForm configForm = new ConfigForm(GralConfig, EmailConfig))
+            {
+                var ans = configForm.ShowDialog();
+                if (ans == System.Windows.Forms.DialogResult.OK)
+                {
+                    _gralConfigData = configForm.GetGralConfigData;
+                    _emailConfigData = configForm.GetEmailConfigData;
+                }
+            }
         }
 
         private void guardarMonitoreosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -83,7 +94,7 @@ namespace TaskMonitor
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TaskMonitor.Sources.Monitor newMonitor = null;
-            using (AddMonitor addMonitorForm = new AddMonitor(this))
+            using (AddMonitorForm addMonitorForm = new AddMonitorForm(this))
             {
                 var ans = addMonitorForm.ShowDialog();
                 if (ans == System.Windows.Forms.DialogResult.OK)
@@ -122,7 +133,7 @@ namespace TaskMonitor
 
         private void quitarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (EndMonitor endMonitorForm = new EndMonitor(this))
+            using (EndMonitorForm endMonitorForm = new EndMonitorForm(this))
             {
                 endMonitorForm.ShowDialog();
             }
@@ -201,6 +212,11 @@ namespace TaskMonitor
         #endregion
 
         #region Events
+        private void MonitorMgr_Load(object sender, EventArgs e)
+        {
+            this.Activate();
+        }
+
         private void MonitorMgr_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.statusReporter.RequestStopThread();
@@ -471,8 +487,8 @@ namespace TaskMonitor
         }
 
         //Setters & Getters
-        public static int RefreshInterval { get { return _queryingInterval; } }
-        public static int UpdateInterval { get { return _updateInterval; } }
+        public static ConfigForm.GralConfigData GralConfig { get { return _gralConfigData; } }
+        public static ConfigForm.EmailConfigData EmailConfig { get { return _emailConfigData; } }
 
         //Atributos
         bool monitoring;
@@ -480,12 +496,8 @@ namespace TaskMonitor
         private StatusReporter statusReporter;
         private List<ThreadContext> serviceMonitorThreads;
         private List<ThreadContext> processMonitorThreads;
-        private static int _queryingInterval = 1200;
-        private static int _updateInterval = 35;
 
-        private void MonitorMgr_Load(object sender, EventArgs e)
-        {
-            this.Activate();
-        }
+        private static ConfigForm.GralConfigData _gralConfigData;
+        private static ConfigForm.EmailConfigData _emailConfigData;
     }
 }

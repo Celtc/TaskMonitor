@@ -56,9 +56,9 @@
             // 
             this.dataGridView_services.AllowUserToAddRows = false;
             this.dataGridView_services.AllowUserToDeleteRows = false;
-            this.dataGridView_services.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView_services.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView_services.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_services.Location = new System.Drawing.Point(0, 0);
             this.dataGridView_services.MultiSelect = false;
@@ -72,9 +72,9 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.Location = new System.Drawing.Point(12, 27);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -94,9 +94,9 @@
             // 
             this.dataGridView_process.AllowUserToAddRows = false;
             this.dataGridView_process.AllowUserToDeleteRows = false;
-            this.dataGridView_process.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView_process.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView_process.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_process.Location = new System.Drawing.Point(0, 3);
             this.dataGridView_process.MultiSelect = false;
@@ -124,8 +124,8 @@
             this.opcionesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.iniciarMonitoreoToolStripMenuItem,
             this.detenerMonitoreosToolStripMenuItem,
-            this.configuraciónToolStripMenuItem,
             this.guardarMonitoreosToolStripMenuItem,
+            this.configuraciónToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.opcionesToolStripMenuItem.Name = "opcionesToolStripMenuItem";
             this.opcionesToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
@@ -134,7 +134,7 @@
             // iniciarMonitoreoToolStripMenuItem
             // 
             this.iniciarMonitoreoToolStripMenuItem.Name = "iniciarMonitoreoToolStripMenuItem";
-            this.iniciarMonitoreoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.iniciarMonitoreoToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.iniciarMonitoreoToolStripMenuItem.Text = "Iniciar monitoreos";
             this.iniciarMonitoreoToolStripMenuItem.Click += new System.EventHandler(this.iniciarMonitoreoToolStripMenuItem_Click);
             // 
@@ -142,28 +142,28 @@
             // 
             this.detenerMonitoreosToolStripMenuItem.Enabled = false;
             this.detenerMonitoreosToolStripMenuItem.Name = "detenerMonitoreosToolStripMenuItem";
-            this.detenerMonitoreosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.detenerMonitoreosToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.detenerMonitoreosToolStripMenuItem.Text = "Detener monitoreos";
             this.detenerMonitoreosToolStripMenuItem.Click += new System.EventHandler(this.detenerMonitoreosToolStripMenuItem_Click);
             // 
             // configuraciónToolStripMenuItem
             // 
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.configuraciónToolStripMenuItem.Text = "Guardar monitoreos";
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.configuraciónToolStripMenuItem.Text = "Configuración";
             this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
             // 
             // guardarMonitoreosToolStripMenuItem
             // 
             this.guardarMonitoreosToolStripMenuItem.Name = "guardarMonitoreosToolStripMenuItem";
-            this.guardarMonitoreosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.guardarMonitoreosToolStripMenuItem.Text = "Configuración";
+            this.guardarMonitoreosToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.guardarMonitoreosToolStripMenuItem.Text = "Guardar Monitores";
             this.guardarMonitoreosToolStripMenuItem.Click += new System.EventHandler(this.guardarMonitoreosToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 

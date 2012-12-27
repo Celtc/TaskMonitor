@@ -1,6 +1,6 @@
 ﻿namespace TaskMonitor
 {
-    partial class AddMonitor
+    partial class AddMonitorForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddMonitor));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddMonitorForm));
             this.button_listServices = new System.Windows.Forms.Button();
             this.listBox_results = new System.Windows.Forms.ListBox();
             this.button_listProccess = new System.Windows.Forms.Button();

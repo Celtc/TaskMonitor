@@ -50,17 +50,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddMonitor.cs">
+    <Compile Include="AddMonitorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EndMonitor.cs">
+    <Compile Include="ConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EndMonitor.Designer.cs">
-      <DependentUpon>EndMonitor.cs</DependentUpon>
+    <Compile Include="ConfigForm.Designer.cs">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI.Designer.cs">
-      <DependentUpon>AddMonitor.cs</DependentUpon>
+    <Compile Include="EndMonitorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EndMonitorForm.Designer.cs">
+      <DependentUpon>EndMonitorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddMonitorForm.Designer.cs">
+      <DependentUpon>AddMonitorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MessageForm.cs">
       <SubType>Form</SubType>
@@ -84,11 +90,14 @@
     <Compile Include="Sources\PermissionManager.cs" />
     <Compile Include="Sources\ServiceTools.cs" />
     <Compile Include="Sources\StatusReportercs.cs" />
-    <EmbeddedResource Include="AddMonitor.resx">
-      <DependentUpon>AddMonitor.cs</DependentUpon>
+    <EmbeddedResource Include="AddMonitorForm.resx">
+      <DependentUpon>AddMonitorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EndMonitor.resx">
-      <DependentUpon>EndMonitor.cs</DependentUpon>
+    <EmbeddedResource Include="ConfigForm.resx">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EndMonitorForm.resx">
+      <DependentUpon>EndMonitorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MessageForm.resx">
       <DependentUpon>MessageForm.cs</DependentUpon>

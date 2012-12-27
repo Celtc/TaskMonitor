@@ -1,6 +1,6 @@
 ﻿namespace TaskMonitor
 {
-    partial class EndMonitor
+    partial class EndMonitorForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EndMonitor));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EndMonitorForm));
             this.label_type = new System.Windows.Forms.Label();
             this.comboBox_type = new System.Windows.Forms.ComboBox();
             this.label_monitorName = new System.Windows.Forms.Label();

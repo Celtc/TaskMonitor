@@ -322,7 +322,7 @@ namespace TaskMonitor.Sources
                 this.callerForm.RefreshDataGrids(sRefresh, pRefresh);
                
                 //Intervalo de update
-                Thread.Sleep(MonitorMgr.RefreshInterval);
+                Thread.Sleep(MonitorMgr.GralConfig.updateInterval);
             }
 
             //Termina el hilo
